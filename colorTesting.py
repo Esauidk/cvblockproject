@@ -9,7 +9,7 @@ Change these paths to the absolute paths in your context (pwd)
 # Path to your /input_img directory
 path = r'/Users/esauabraham/Documents/CSE455/cvblokusproject/TrainingImages/PieceRecognition'
 # Path to your /output_img directory
-output_dir = r'/Users/esauabraham/Documents/CSE455/cvblokusproject/TrainingImages/Processed'
+output_dir = r'/Users/esauabraham/Documents/CSE455/cvblokusproject/TrainingImages/ProcessedEverythingColor'
 
 """
 This is a testing program to play around with image processing and colors
@@ -27,10 +27,14 @@ for i in range(1, 33):
 
     os.chdir(output_dir)
     os.mkdir(str(i))
-    cv2.imwrite(str(i) + '/' '0.jpg', green_mask)
+    cv2.imwrite(str(i) + '/' '0.jpg', img)
+    cv2.imwrite(str(i) + '/' 'flip0.jpg', cv2.flip(img, 1))
 
-    rotate_temp = green_mask
-    for degree in [90, 180, 270]:
-        rotate = cv2.rotate(rotate_temp, cv2.ROTATE_90_CLOCKWISE)
-        rotate_temp = rotate
-        cv2.imwrite(str(i) + '/' + str(degree) + '.jpg', rotate)
+    ver = ['normal', 'flip']
+    styles = {'normal': img, 'flip': cv2.flip(img, 1)}
+    for style in ver:
+        rotate_temp = styles[style]
+        for degree in [90, 180, 270]:
+            rotate = cv2.rotate(rotate_temp, cv2.ROTATE_90_CLOCKWISE)
+            rotate_temp = rotate
+            cv2.imwrite(str(i) + '/' + str(degree) + str(style) + '.jpg', rotate)
