@@ -7,9 +7,9 @@ import os
 Change these paths to the absolute paths in your context (pwd)
 """
 # Path to your /input_img directory
-path = r'/Users/lukeyin/Desktop/CSE455/cvblokusproject/TrainingImages/PieceRecognition'
+path = r'/Users/esauabraham/Documents/CSE455/cvblokusproject/TrainingImages/PieceRecognition'
 # Path to your /output_img directory
-output_dir = r'/Users/lukeyin/Desktop/CSE455/cvblokusproject/TrainingImages/Processed'
+output_dir = r'/Users/esauabraham/Documents/CSE455/cvblokusproject/TrainingImages/Processed'
 
 """
 This is a testing program to play around with image processing and colors
@@ -26,10 +26,11 @@ for i in range(1, 33):
     green_mask = cv2.bitwise_not(green_mask)
 
     os.chdir(output_dir)
-    cv2.imwrite(str(i) + '_0.jpg', green_mask)
+    os.mkdir(str(i))
+    cv2.imwrite(str(i) + '/' '0.jpg', green_mask)
 
     rotate_temp = green_mask
     for degree in [90, 180, 270]:
         rotate = cv2.rotate(rotate_temp, cv2.ROTATE_90_CLOCKWISE)
         rotate_temp = rotate
-        cv2.imwrite(str(i) + '_' + str(degree) + '.jpg', rotate)
+        cv2.imwrite(str(i) + '/' + str(degree) + '.jpg', rotate)
