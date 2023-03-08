@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Crime Rates per US State (2000-2020)</title>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <header id="title-block-header">
+        <h1 class="title">Crime Rates per US State (2000-2020)</h1>
+        <h2 class="subtitle">Project Write-Up</h2>
+        <p class="author">Michael Li, Tyler Waters, Luke Yin</p>
+        <p class="date">November 7, 2022</p>
+    </header>
+    <nav id="TOC">
+        <ul>
+            <li><a href="#proposed-question">Proposed question</a></li>
+            <li><a href="#design-decisions">Design
+                    decisions</a></li>
+            <li><a href="#development-process">Development process</a></li>
+            <li><a href="#sources">Sources</a></li>
+        </ul>
+        <ul>
+            <li><a href="/a3/GOOSSE/index.html">Home</a></li>
+        </ul>
+    </nav>
+    <h1 id="proposed-question">Proposed question</h1>
+    <p>Although the main objective of this interactive visualization is to allow a user to explore the data and form
+        their own questions and answers, we propose the following question as a possible question/story:</p>
+    <blockquote>
+        <p>How did the violent, property, and general crime rates per capita of 100,000 people of each American state
+            change between 2000 and 2020, and how did these annual estimated rates compare between states?</p>
+    </blockquote>
+    <h1 id="design-decisions">Design decisions</h1>
+    <p>As noted, our visualization was designed to discover insights regarding the rates of violent, property, and
+        general crime for each American state and how those crime rates varied between 2000 and 2020. We also thought
+        that given the geospatial nature of the data and how people, ideas, and criminal resources frequently travel
+        across state lines, it would be interesting to observe any geographic relationships between state crime rates.
+        Our exploratory analysis of the data began with the most intuitive comparisons, those being direct, quantitative
+        comparisons of the annual crime rates of the American states in our dataset, absent any geographic context -
+        this led us to think of maximum and minimum rates, how we would rank the states by crime rate, and how each pair
+        of states would measure up against one another. The bar chart was ideally suited for this task, as we can
+        separate the nominal categories of American states and use vertical positioning/sizes of bars in a manner that
+        directly supported our subconscious and perceptual inferences. Mackinlay's judgments corroborate our stance that
+        comparing positional heights of the tops of bars and the sizes of bars lends well towards encoding ratio data.
+        Because of this, we discovered that DC dominated all other states in all variants of crime regardless of which
+        year was observed. In recognizing that DC is an outlier, we decided to eliminate it from the dataset, both so
+        that differences in other state crime rate values are more pronounced, and more accurate because DC does not
+        qualify as a state. These two driving factors were both present in the initial analysis and in the final US map
+        that we visualized, allowing us to reach more extreme values/colors in more states that fell within a more
+        limited range of crime rates - DC is also too small in land area to be noticed or hovered over on the US map
+        visualization and its tooltips that we built in Vega-lite.</p>
+    <p>As stated above, not only did we want to compare crime rate quantities/ratios between states, but we wanted to do
+        so along a temporal dimension in a way that also reflects geospatial relationships. The average individual is
+        familiar with a geographic map, and if they're American, they are familiar with that of the United States. We
+        decided that the best representation of crime rates over geographic positions was a geographic map. This aligns
+        with Mackinlay's priority of position to encode nominal data, but with a quantitative crime value
+        associated/tied in with each geographic position. With the position encoding occupied, the quantitative crime
+        value per American state needed an encoding. We are unable to change the sizes/volumes of American states on a
+        map without horribly distorting the visualization and confusing the viewer, which led us to Mackinlay's
+        prescription of using color saturation to represent the intensity of crime in each state. To this end, we felt
+        that crime is an inherently negative quality of society, whether it be a root problem or the symptom of another,
+        so we associated this negative connotation with the color red, like the blood of victims of violent crime. We
+        used darker shades of red to represent greater crime rates and lighter shades of red for lower rates, to
+        maximize how intuitive our chart is - we also believe that this is reasonably accessible so that color-blind
+        viewers do not need to distinguish between color hues/harmonies. The temporal aspect of the data was encoded
+        through an interactive dynamic query filter. Generally, people understand the universe we inhabit to encompass
+        perceivable dimensions, three that involve position, and a fourth that objects in the lower three seem to
+        traverse. In this paradigm of observation, it appears that things with positions/locations change over time,
+        along an axis that does not live on a positional dimension. We felt that the most intuitive way to implement
+        this was with a slider over the 20 years our dataset spanned over so that it seems like the American states
+        change in color over time as the timeline progresses at the user's input. This to us, represents the best, most
+        perceptually intuitive and inferrable way to communicate our data, as opposed to encoding time over a positional
+        axis and using a slider to represent physical locations that wouldn't make sense on a 1-dimensional axis.</p>
+    <p>We further concluded that though the map is well-suited towards representing geospatial comparisons of crime
+        rates between states, the direct comparisons of crime rate quantities are best made with crime rates encoded
+        positionally, as Mackinlay recommends. This inspired us to maintain our bar chart in our final deliverable but
+        with it synchronized with the slider and change its contents as the year variable is adjusted by the user. This
+        is for the same reasons listed above. However, we decided that the bar chart should avoid confusing redundant
+        encodings, and made the bar chart an appealing and professional low-contrast static red shade with no color
+        encodings. Finally, in regards to the bar chart, we felt that the primary benefit of a bar chart is that we can
+        compare the relative heights/crime rates between states directly and without geographic information "in the
+        way". While the map had tooltips to read out numbers for each state for convenience, the values are more
+        directly accessible on the bar chart since the crime rates, not the geographic locations, are the focus. This
+        naturally progressed towards ranking states by crime rates for each year, so we sorted the bars by descending
+        height to allow the user to smoothly view relationships between potentially physically distant states and how
+        their crime rates converge and diverge from each other as they change positions along the X-axis. We considered
+        the alternative of not sorting/changing the horizontal positioning of the bars between years, but felt that the
+        purpose of the bar visualization is to compare states on the basis of only their crime rates, and not their
+        names' lexicographical proximity; it is much more difficult to compare two bars that are similar in height when
+        they are not right next to each other - we make this easier and automatic for the viewer. Initially, we were
+        focused on violent crime but began to debate if we wanted to represent overall crime rates as well, and this led
+        us to develop an additional dynamic query filter that allows the user to choose from a dropdown list of which
+        type of crime, "violent", "property", or "all", they want to observe. This serves the viewer in answering our
+        question by allowing them to view how high the bars reach in terms of the tick marks of the Y-axis for each
+        crime type, and gives them an intuitive sense of how high crime rates per capita are in total, but also how much
+        violent and property crime make up those cumulative values.</p>
+    <h1 id="development-process">Development process</h1>
+    <p>Due to familiarity through in-class activities and the plethora of examples in readings/lecture, we opted to use
+        Vega-lite to build our visualizations. Furthermore, the Vega-lite API did not constrict us anyway and allowed us
+        to develop with no compromises in functionality, only further reinforcing this tech-stack choice. All of our
+        development was done through Observable notebooks, and the final interactive visualization (and inputs) was
+        simply embedded into the final site. You can follow our development process through a series of forked
+        notebooks, with this being the final iteration: <a
+            href="https://observablehq.com/d/9aa4ede4d0a01c60">https://observablehq.com/d/9aa4ede4d0a01c60</a>.</p>
+    <p>The development of the visualization began with Tyler fetching and transforming the data by extracting topological
+        data alongside the FBI data and matching each state with its FIPS code to bind the two and begin forming a
+        geographic map. This was followed by Luke who further filtered the data to eliminate null values and calculate
+        per capita 100,000 crime rates. This involved a great deal of wrangling in Javascript to produce nested objects
+        with the data and extrema necessary to generate a choropleth map. He then implemented the initial functional
+        slider and map legend to build out a first prototype map. It was at this point that Tyler cleaned the data
+        further outside of Observable, added the dynamic filter for crime types, and updated the color scheme of the
+        map. Finally, in between the steps of this process, Michael formed the final sorted bar chart and drafted this
+        write-up. By far the most time-consuming process was to clean and manipulate the data into a form conducive to
+        generating visualizations, both while generating the map and fitting data into encodings programmatically for
+        the bar chart. The overall time spent by the team was
+        25 hours. Lastly, we considered additional upgrades to our
+        visualization such as stacking bars to make proportions of crime types more visible and clustering/highlighting
+        areas of the map with multiple states together that have similar crime rates, but these implementations were
+        outside the technical scope/skill range of the group for this assignment. We reserve attempting these features
+        for the final project.
+    </p>
+    <h2 id="sources">Sources</h2>
+    <p>Our data source was a set of aggregated statistics and estimates about crime in the United States. The data was
+        formed by the FBI as part of the Uniform Crime Reporting (UCR) program, which summarizes crimes by states using
+        statistical modeling to inform missing or incomplete data.</p>
+    <p>Crime & population data (via <a href="https://crime-data-explorer.fr.cloud.gov/pages/home">FBI Crime Data
+            Explorer</a>): <a
+            href="https://s3-us-gov-west-1.amazonaws.com/cg-d4b776d0-d898-4153-90c8-8336f86bdfec/estimated_crimes_1979_2020.csv">https://s3-us-gov-west-1.amazonaws.com/cg-d4b776d0-d898-4153-90c8-8336f86bdfec/estimated_crimes_1979_2020.csv</a>
+    <p>State FIPS codes: <a
+            href="https://github.com/kjhealy/fips-codes/blob/master/state_fips_master.csv">https://github.com/kjhealy/fips-codes/blob/master/state_fips_master.csv</a>
+    </p>
+    <hr style="margin-top: 2.5em" />
+</body>
+
+<footer>
+    <span><a href="/a3/GOOSSE/index.html">Home</a> </span>
+    <span><a href="https://observablehq.com/d/9b758358234aa250">Observable
+            Notebook</a> | <a href="https://gitlab.cs.washington.edu/cse442-22au/a3/GOOSSE">Code
+            repository</a> | <a href="https://courses.cs.washington.edu/courses/cse442/22au/">CSE 442 Data
+            Visualization</a></span>
+</footer>
+
+</html>
