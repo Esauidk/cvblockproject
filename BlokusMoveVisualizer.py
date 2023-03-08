@@ -175,6 +175,10 @@ def main():
                         else:
                             print("Not an option")
                     place_piece(color=color, piece=pieceName, boardPath=board)
+                    moveOptions = cv2.imread("next_move.jpg")
+                    rgbVer = cv2.cvtColor(moveOptions, cv2.COLOR_BGR2RGB)
+                    plt.imshow(rgbVer)
+                    plt.show()
 
                 
                 
