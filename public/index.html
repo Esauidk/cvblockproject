@@ -1,65 +1,65 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@3/dist/inspector.css">
-  <script type="module">
-    import { Runtime, Inspector } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-    import define from "https://api.observablehq.com/d/9aa4ede4d0a01c60@1126.js?v=3";
-    new Runtime().module(define, name => {
-      if (name === "viewof year") return new Inspector(document.querySelector("#observablehq-viewof-year-cce50e87"));
-      if (name === "viewof crime_type") return new Inspector(document.querySelector("#observablehq-viewof-crime_type-cce50e87"));
-      if (name === "map") return new Inspector(document.querySelector("#observablehq-map-cce50e87"));
-      if (name === "bar") return new Inspector(document.querySelector("#observablehq-bar-cce50e87"));
-      return ["max_crimes", "crimes_legend_numbers"].includes(name);
-    });
-  </script>
-  <title>Crime Rates per US State (2000-2020)</title>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
+<!--<head>-->
+<!--  <meta charset="utf-8" />-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />-->
+<!--  <link rel="stylesheet" href="style.css" />-->
+<!--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@3/dist/inspector.css">-->
+<!--  <script type="module">-->
+<!--    import { Runtime, Inspector } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";-->
+<!--    import define from "https://api.observablehq.com/d/9aa4ede4d0a01c60@1126.js?v=3";-->
+<!--    new Runtime().module(define, name => {-->
+<!--      if (name === "viewof year") return new Inspector(document.querySelector("#observablehq-viewof-year-cce50e87"));-->
+<!--      if (name === "viewof crime_type") return new Inspector(document.querySelector("#observablehq-viewof-crime_type-cce50e87"));-->
+<!--      if (name === "map") return new Inspector(document.querySelector("#observablehq-map-cce50e87"));-->
+<!--      if (name === "bar") return new Inspector(document.querySelector("#observablehq-bar-cce50e87"));-->
+<!--      return ["max_crimes", "crimes_legend_numbers"].includes(name);-->
+<!--    });-->
+<!--  </script>-->
+<!--  <title>Crime Rates per US State (2000-2020)</title>-->
+<!--  &lt;!&ndash;[if lt IE 9]>-->
+<!--    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>-->
+<!--  <![endif]&ndash;&gt;-->
+<!--</head>-->
 
 <body>
   <header id="title-block-header">
-    <h1 class="title">Crime Rates per US State (2000-2020)</h1>
-    <p class="author">Michael Li, Tyler Waters, Luke Yin</p>
-    <p class="date">November 7, 2022</p>
+    <h1 class="title">Computer Vision Blokus Project</h1>
+    <p class="author">Esau Abraham, Joseph Cook, Luke Yin</p>
+    <p class="date">March 14, 2023</p>
   </header>
-  <div id="observablehq-viewof-year-cce50e87" class="embeds"></div>
-  <div id="observablehq-viewof-crime_type-cce50e87" class="embeds"></div>
-  <div id="observablehq-map-cce50e87" class="embeds"></div>
-  <div id="observablehq-bar-cce50e87" class="embeds"></div>
   <h1 id="design-decisions">Design & development write-up</h1>
   <p>Read about our justifications regarding design choices and development process <a href="/cvblokusproject/writeup.html">here</a>.
   </p>
-  <h1 id="other-details">Other details</h1>
-  <p>All data is sourced from the FBI (see <a href="/cvblokusproject/writeup.html#sources">Sources</a>) and categorized
-    per their own definitions for various types of crime.</p>
-  <ul>
-    <li><strong>Violent crime</strong> is composed of four offenses: murder and
-      nonnegligent manslaughter, rape, robbery, and aggravated assault.</li>
-    <li><strong>Property crime</strong> includes the offenses of burglary,
-      larceny-theft, motor vehicle theft, and arson. The object of the
-      theft-type offenses is the taking of money or property, but there is no
-      force or threat of force against the victims.</li>
-    <li><strong>All crime</strong> includes all of the above offenses.</li>
-  </ul>
-  <p>More crime data can be explored here: <a
-      href="https://crime-data-explorer.fr.cloud.gov/pages/home">https://crime-data-explorer.fr.cloud.gov/pages/home</a>
-  </p>
+  <h1 id="other-details">Project Video</h1>
+  <iframe width="560" height="315"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+  </iframe>
+<!--  <p>All data is sourced from the FBI (see <a href="/cvblokusproject/writeup.html#sources">Sources</a>) and categorized-->
+<!--    per their own definitions for various types of crime.</p>-->
+<!--  <ul>-->
+<!--    <li><strong>Violent crime</strong> is composed of four offenses: murder and-->
+<!--      nonnegligent manslaughter, rape, robbery, and aggravated assault.</li>-->
+<!--    <li><strong>Property crime</strong> includes the offenses of burglary,-->
+<!--      larceny-theft, motor vehicle theft, and arson. The object of the-->
+<!--      theft-type offenses is the taking of money or property, but there is no-->
+<!--      force or threat of force against the victims.</li>-->
+<!--    <li><strong>All crime</strong> includes all of the above offenses.</li>-->
+<!--  </ul>-->
+<!--  <p>More crime data can be explored here: <a-->
+<!--      href="https://crime-data-explorer.fr.cloud.gov/pages/home">https://crime-data-explorer.fr.cloud.gov/pages/home</a>-->
+<!--  </p>-->
   <hr style="margin-top: 2.5em" />
 </body>
 
 <footer>
   <span><a href="/cvblokusproject/writeup.html">Write-Up</a> </span>
-  <span><a href="https://observablehq.com/d/9b758358234aa250">Observable
-      Notebook</a> | <a href="https://gitlab.cs.washington.edu/freddy12/cvblokusproject">Code
-      repository</a> | <a href="https://courses.cs.washington.edu/courses/cse442/22au/">CSE 442 Data
-      Visualization</a></span>
+  <span>| <a href="https://gitlab.cs.washington.edu/freddy12/cvblokusproject">Code
+      repository</a> | <a href="https://courses.cs.washington.edu/courses/cse455/23wi/">CSE 455 Computer Vision</a></span>
 </footer>
 
 </html>
