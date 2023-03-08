@@ -4,7 +4,7 @@ yellow = 0.168
 green = 0.333
 blue = 0.667
 
-def place_piece(color, piece):
+def place_piece(color, piece, boardPath="data/blokus/counter1.png"):
     col = 0
     if (color == "yellow"):
         col = yellow
@@ -14,7 +14,7 @@ def place_piece(color, piece):
         col = green
     elif (color == "red"):
         col = red
-    im = load_image("data/blokus/counter1.png")
+    im = load_image(boardPath)
     square = center_board(im, 0.6)
     save_image(square, "squared_board")
     mini = minimize_board(square, 0.35)
@@ -29,7 +29,7 @@ def place_piece(color, piece):
     hsv_to_rgb(placements)
     save_image(placements, "decision_map")
 
-place_piece("red", "I1")
+#place_piece("red", "I1")
 
 
 # def create_mask():
