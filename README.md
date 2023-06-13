@@ -7,8 +7,6 @@ Team members:
 
 ![Blokus Board](blokus_title.jpeg)
 
-Project Website: http://freddy12.pages.cs.washington.edu/cvblokusproject
+Project Website: [cvblokusproject](https://esauidk.github.io/cvblockproject/)
 
-## Project Summary
 
-- put text here
